@@ -25,10 +25,17 @@ jobs:
           OUT: assets/activity.svg
         run: python scripts/activity_graph.py
 
+      - name: Draw snake contribution grid
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: ${{ github.repository_owner }}
+          SNAKE_OUT: assets/snake.svg
+        run: python scripts/snake_grid.py
+
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/activity.svg
+          git add assets/activity.svg assets/snake.svg
           git diff --cached --quiet || git commit -m "chore: update activity graph [skip ci]"
           git push
