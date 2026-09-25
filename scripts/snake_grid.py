@@ -49,9 +49,10 @@ def render(weeks, total, note=""):
     start_col = min(c for c, r in valid if r == 0)
     here = (start_col, 0)                      # the top-left box
 
-    def route(a, targets):
-        """Shortest walk from a to the nearest target, stepping only on grid boxes."""
-        prev, queue, seen = {a: None}, [a], {a}
+    def route(a, targets, body=()):
+        """Shortest walk from a to the nearest target, stepping only on grid boxes
+        and never back onto the snake's own body (so it turns instead of reversing)."""
+        prev, queue, seen = {a: None}, [a], {a} | set(body)
         while queue:
             nxt = []
             for cur in queue:
@@ -69,13 +70,16 @@ def render(weeks, total, note=""):
                         prev[nb] = cur
                         nxt.append(nb)
             queue = nxt
-        return [a]
+        return None
 
     order, left = [here], set(food) - {here}
     while left:
-        leg = route(order[-1], left)
+        body = order[-5:-1]                      # the four boxes right behind the head
+        leg = route(order[-1], left, body) or route(order[-1], left) or [order[-1]]
         order += leg[1:]
         left -= set(leg)
+        if len(leg) == 1:
+            break
     n = len(order)
     first_visit = {}
     for i, pos in enumerate(order):
