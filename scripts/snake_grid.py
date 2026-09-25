@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Draw an animated contribution grid with a snake that starts on the first box
-(top-left) and stays inside the grid, eating each day you contributed.
+(top-left), then heads for the nearest day you contributed, eats it, and moves on,
+always stepping only on boxes inside the grid.
 
 Runs inside GitHub Actions (see .github/workflows/activity.yml).
 Needs GITHUB_TOKEN and GH_USER in the environment. Standard library only.
@@ -41,20 +42,52 @@ def render(weeks, total, note=""):
     def center(c, r):
         return ox + c * STEP + CELL / 2, oy + r * STEP + CELL / 2
 
-    # serpentine path through every position, starting top-left
-    order = []
-    for c in range(cols):
-        rows = range(7) if c % 2 == 0 else range(6, -1, -1)
-        order += [(c, r) for r in rows]
-    n = len(order)
-    index = {pos: i for i, pos in enumerate(order)}
+    # every box that exists in the grid (first and last weeks can be partial)
+    valid = {(c, d["weekday"]) for c, w in enumerate(weeks) for d in w["contributionDays"]}
+    food = {(c, d["weekday"]) for c, w in enumerate(weeks) for d in w["contributionDays"]
+            if d["contributionLevel"] != "NONE"}
+    start_col = min(c for c, r in valid if r == 0)
+    here = (start_col, 0)                      # the top-left box
 
-    T = 24.0            # full loop
-    MOVE = 20.0         # seconds spent crawling
+    def route(a, targets):
+        """Shortest walk from a to the nearest target, stepping only on grid boxes."""
+        prev, queue, seen = {a: None}, [a], {a}
+        while queue:
+            nxt = []
+            for cur in queue:
+                if cur in targets:
+                    path = []
+                    while cur is not None:
+                        path.append(cur)
+                        cur = prev[cur]
+                    return path[::-1]
+                c, r = cur
+                for step in ((0, 1), (1, 0), (0, -1), (-1, 0)):
+                    nb = (c + step[0], r + step[1])
+                    if nb in valid and nb not in seen:
+                        seen.add(nb)
+                        prev[nb] = cur
+                        nxt.append(nb)
+            queue = nxt
+        return [a]
+
+    order, left = [here], set(food) - {here}
+    while left:
+        leg = route(order[-1], left)
+        order += leg[1:]
+        left -= set(leg)
+    n = len(order)
+    first_visit = {}
+    for i, pos in enumerate(order):
+        first_visit.setdefault(pos, i)
+
+    step_time = min(0.14, 40.0 / max(n - 1, 1))   # seconds per box
+    MOVE = max((n - 1) * step_time, 0.5)
+    T = MOVE + 3.0                                 # crawl, then a short pause
     frac_move = MOVE / T
 
-    def t_at(i):        # fraction of the loop when the head reaches path index i
-        return (i / (n - 1)) * frac_move
+    def t_at(i):        # fraction of the loop when the head reaches path step i
+        return (i / max(n - 1, 1)) * frac_move
 
     cells, eaten = [], 0
     for c, w in enumerate(weeks):
@@ -66,7 +99,7 @@ def render(weeks, total, note=""):
                 cells.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{CELL}" height="{CELL}" rx="2.5" fill="{LEVELS["NONE"]}"/>')
                 continue
             eaten += 1
-            k = t_at(index[(c, r)])
+            k = t_at(first_visit.get((c, r), n - 1))
             k1 = min(k + 0.004, frac_move + 0.01)
             cells.append(
                 f'<rect x="{x:.1f}" y="{y:.1f}" width="{CELL}" height="{CELL}" rx="2.5" fill="{LEVELS["NONE"]}"/>'
@@ -87,8 +120,10 @@ def render(weeks, total, note=""):
 
     # snake: head + 4 body segments following the same path, each one step behind
     pts = [center(c, r) for c, r in order]
+    if len(pts) == 1:
+        pts.append(pts[0])
     path = "M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in pts)
-    seg_lag = 1.0 / (n - 1) * frac_move   # one cell of delay, as a loop fraction
+    seg_lag = step_time / T               # one box of delay, as a loop fraction
     snake = []
     for s in range(5):
         start = s * seg_lag
