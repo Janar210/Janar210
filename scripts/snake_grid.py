@@ -93,7 +93,8 @@ def render(weeks, total, note=""):
     def t_at(i):        # fraction of the loop when the head reaches path step i
         return (i / max(n - 1, 1)) * frac_move
 
-    cells, eaten = [], 0
+    cells, eaten, eat_times = [], 0, []
+    bite = 0.3 / T                       # length of the bite effect, as a loop fraction
     for c, w in enumerate(weeks):
         for d in w["contributionDays"]:
             r = d["weekday"]
@@ -104,13 +105,40 @@ def render(weeks, total, note=""):
                 continue
             eaten += 1
             k = t_at(first_visit.get((c, r), n - 1))
-            k1 = min(k + 0.004, frac_move + 0.01)
+            eat_times.append(k)
+            col = LEVELS[lvl]
+            cx, cy = x + CELL / 2, y + CELL / 2
+            a1, a2, a3 = k + bite * 0.35, k + bite, k + bite * 2.2   # swell, gone, effects faded
+            anim = f'dur="{T}s" repeatCount="indefinite"'
+            # the square: swells, then collapses into the snake
             cells.append(
                 f'<rect x="{x:.1f}" y="{y:.1f}" width="{CELL}" height="{CELL}" rx="2.5" fill="{LEVELS["NONE"]}"/>'
-                f'<rect x="{x:.1f}" y="{y:.1f}" width="{CELL}" height="{CELL}" rx="2.5" fill="{LEVELS[lvl]}">'
+                f'<g transform="translate({cx:.1f},{cy:.1f})"><rect x="{-CELL/2}" y="{-CELL/2}" width="{CELL}" height="{CELL}" rx="2.5" fill="{col}">'
                 f'<title>{d["date"]}: {d["contributionCount"]} contributions</title>'
-                f'<animate attributeName="opacity" dur="{T}s" repeatCount="indefinite" '
-                f'values="1;1;0;0;1" keyTimes="0;{k:.4f};{k1:.4f};0.985;1"/></rect>')
+                f'<animateTransform attributeName="transform" type="scale" {anim} '
+                f'values="1;1;1.5;0;0;1" keyTimes="0;{k:.4f};{a1:.4f};{a2:.4f};0.985;1"/></rect>'
+                # ripple ring
+                f'<circle r="6" fill="none" stroke="{col}" stroke-width="1.5" opacity="0">'
+                f'<animate attributeName="r" {anim} values="6;6;17;17" keyTimes="0;{k:.4f};{a3:.4f};1"/>'
+                f'<animate attributeName="opacity" {anim} values="0;0;.9;0;0" keyTimes="0;{k:.4f};{k + 0.001:.4f};{a3:.4f};1"/></circle></g>')
+            # crumbs bursting outward
+            for dx, dy in ((-9, -9), (9, -9), (-9, 9), (9, 9)):
+                cells.append(
+                    f'<rect x="-1.8" y="-1.8" width="3.6" height="3.6" rx="1" fill="{col}" opacity="0">'
+                    f'<animateTransform attributeName="transform" type="translate" {anim} '
+                    f'values="{cx:.1f} {cy:.1f};{cx:.1f} {cy:.1f};{cx + dx:.1f} {cy + dy:.1f};{cx + dx:.1f} {cy + dy:.1f}" '
+                    f'keyTimes="0;{k:.4f};{a3:.4f};1"/>'
+                    f'<animate attributeName="opacity" {anim} values="0;0;1;0;0" keyTimes="0;{k:.4f};{k + 0.001:.4f};{a3:.4f};1"/></rect>')
+            # "+N" floating up
+            cnt = d["contributionCount"]
+            if cnt:
+                cells.append(
+                    f'<text text-anchor="middle" font-size="10" font-weight="700" fill="{col}" opacity="0">+{cnt}'
+                    f'<animateTransform attributeName="transform" type="translate" {anim} '
+                    f'values="{cx:.1f} {cy - 8:.1f};{cx:.1f} {cy - 8:.1f};{cx:.1f} {cy - 26:.1f};{cx:.1f} {cy - 26:.1f}" '
+                    f'keyTimes="0;{k:.4f};{k + bite * 4:.4f};1"/>'
+                    f'<animate attributeName="opacity" {anim} values="0;0;1;1;0;0" '
+                    f'keyTimes="0;{k:.4f};{k + 0.002:.4f};{k + bite * 2.5:.4f};{k + bite * 4:.4f};1"/></text>')
 
     # month labels
     months, last, last_c = [], None, -9
@@ -128,6 +156,18 @@ def render(weeks, total, note=""):
         pts.append(pts[0])
     path = "M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in pts)
     seg_lag = step_time / T               # one box of delay, as a loop fraction
+    gulp = ""
+    if eat_times:
+        kt, vals, last_t = ["0"], ["1"], 0.0
+        for e in sorted(eat_times):
+            if e - 0.0005 <= last_t or e + bite * 1.5 >= 0.999:
+                continue
+            kt += [f"{e - 0.0005:.4f}", f"{e + bite * 0.5:.4f}", f"{e + bite * 1.5:.4f}"]
+            vals += ["1", "1.45", "1"]
+            last_t = e + bite * 1.5
+        kt.append("1"); vals.append("1")
+        gulp = (f'<animateTransform attributeName="transform" type="scale" additive="sum" dur="{T}s" '
+                f'repeatCount="indefinite" values="{";".join(vals)}" keyTimes="{";".join(kt)}"/>')
     snake = []
     for s in range(5):
         start = s * seg_lag
@@ -139,7 +179,8 @@ def render(weeks, total, note=""):
             f'<animateMotion dur="{T}s" repeatCount="indefinite" calcMode="linear" '
             f'keyPoints="0;0;1;1" keyTimes="0;{start:.4f};{min(end, 0.97):.4f};1" path="{path}"/>'
             f'<animate attributeName="opacity" dur="{T}s" repeatCount="indefinite" '
-            f'values="0;1;1;0;0" keyTimes="0;0.01;{min(end, 0.97):.4f};{min(end, 0.97) + 0.02:.4f};1"/></rect>')
+            f'values="0;1;1;0;0" keyTimes="0;0.01;{min(end, 0.97):.4f};{min(end, 0.97) + 0.02:.4f};1"/>'
+            + (gulp if s == 0 else "") + '</rect>')
 
     legend_x = ox + gw - 5 * (CELL + 4) - 34
     legend = (f'<text x="{legend_x - 8:.1f}" y="{H - 14}" text-anchor="end" font-size="9.5" fill="#6e7681">less</text>' +
