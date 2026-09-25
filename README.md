@@ -29,15 +29,15 @@
 public class Janarthanan {
 
     private final String name        = "Janarthanan Narayanasamy";
-    private final String location    = "Chennai, Tamil Nadu, India 🇮🇳";
+    private final String location    = "Namakkal, Tamil Nadu, India 🇮🇳";
     private final String role        = "Senior Java Backend Developer";
     private final String education   = "B.Sc — Jairam Arts & Science College, Salem";
     private final int experience     = 4+; // years
 
     private final String[] stack = {
-        "Java 8/17/21", "Spring Boot", "Spring Security",
-        "Apache Kafka", "PostgreSQL", "AWS", "Docker",
-        "WebSocket", "Keycloak", "GitHub Actions"
+        "Java 8/17/21", "Spring Boot", "Spring Framework",
+        "Spring Security", "Apache Kafka", "PostgreSQL", "AWS",
+        "Docker", "WebSocket", "Keycloak", "GitHub Actions"
     };
 
     private final String[] currentlyLearning = {
@@ -136,11 +136,11 @@ public class Janarthanan {
 
 <br/>
 
-> `Java 17` `Spring Boot` `Spring Security` `PostgreSQL` `Apache Kafka` `WebSocket` `Keycloak` `AWS` `Docker` `GitHub Actions` `JUnit` `Mockito` `New Relic` `SLF4J`
+> `Java 8/17/21` `Spring Boot` `Spring Framework` `Spring Security` `PostgreSQL` `Apache Kafka` `WebSocket` `Keycloak` `AWS` `Docker` `GitHub Actions` `JUnit` `Mockito` `New Relic` `SLF4J`
 
 **Backend Development & Architecture**
 - Designed and developed scalable backend services using Java 17 and Spring Boot, supporting multi-tenant enterprise SaaS applications serving **thousands of concurrent users**.
-- Built and maintained **30+ REST APIs** following OpenAPI standards with Swagger documentation, JWT-based authentication, and RBAC using Keycloak for secure access control.
+- Built and maintained **50+ REST APIs** following OpenAPI standards with Swagger documentation, JWT-based authentication, and RBAC using Keycloak for secure access control.
 - Optimized PostgreSQL query performance via advanced indexing, query rewriting, and schema redesign — achieving **~40% improvement in database response time** under high load.
 - Implemented WebSocket-based real-time communication for live dashboards and collaborative features with **sub-second latency**.
 - Architected event-driven microservices using Apache Kafka for asynchronous processing, decoupling services and improving system throughput and fault tolerance.
@@ -182,11 +182,11 @@ public class Janarthanan {
 |:---:|:---|:---|
 | ⚡ | **Database Performance Boost** | Improved PostgreSQL performance by **40%** via indexing, query optimization & schema redesign |
 | 🛡️ | **Production Reliability Champion** | Reduced production downtime by **70%** by resolving memory leaks & thread contention |
-| 🔗 | **API Builder** | Built and deployed **30+ secure REST APIs** for enterprise SaaS serving thousands of users |
+| 🔗 | **API Builder** | Built and deployed **50+ secure REST APIs** for enterprise SaaS serving thousands of users |
 | 🚀 | **DevOps Accelerator** | Reduced release cycle time by **50%** using Docker + GitHub Actions CI/CD automation |
 | ☁️ | **Cloud SLA Achievement** | Maintained **99.9% uptime** SLA through proactive AWS monitoring and auto-scaling |
 | 🧪 | **Quality Advocate** | Maintained **85%+ code coverage** across critical service modules |
-| 👨‍🏫 | **Mentor & Leader** | Mentored **3 junior developers** and improved team code quality, reducing post-release defects |
+| 👨‍🏫 | **Mentor & Leader** | Mentored **3+ junior developers** and improved team code quality, reducing post-release defects |
 
 </div>
 
@@ -207,9 +207,9 @@ public class Janarthanan {
 ### Currently Learning
 
 ```
-☁️  AWS Serverless     → Lambda, API Gateway, Step Functions
-🏗️  System Design      → Distributed systems, CAP theorem, Event Sourcing
-🔐 Advanced Security  → OAuth2 flows, Zero-trust architecture
+☁️ AWS Serverless → Lambda, API Gateway, Step Functions
+🏗️ System Design → Distributed systems, CAP theorem, Event Sourcing
+🔐 Advanced Security → OAuth2 flows, Zero-trust architecture
 📦 Container Orchestration → Kubernetes, Helm charts
 ```
 
