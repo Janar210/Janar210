@@ -125,7 +125,6 @@
 ## 📊 GitHub Activity
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=Janar210&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=70A5FD&icon_color=BF91F3&count_private=true&include_all_commits=true" />
   <img height="165" src="https://streak-stats.demolab.com?user=Janar210&theme=tokyonight-duo&hide_border=true&background=0D1117&ring=70A5FD&fire=BF91F3&currStreakLabel=70A5FD" />
 </p>
 
