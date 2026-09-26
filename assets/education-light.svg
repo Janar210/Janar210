@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="116" viewBox="0 0 900 116" role="img" aria-label="Education: B.Sc, Jairam Arts and Science College, Salem, 2016 to 2018">
+<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+@keyframes prog{0%{stroke-dashoffset:200}55%,100%{stroke-dashoffset:0}}.prog{animation:prog 5s ease-in-out infinite}
+@keyframes dot{0%{transform:translateX(0)}55%,100%{transform:translateX(200px)}}.dot{animation:dot 5s ease-in-out infinite}
+@keyframes grad{0%,55%{opacity:0}62%,95%{opacity:1}100%{opacity:0}}.grad{animation:grad 5s ease-in-out infinite}
+@keyframes cap{0%,100%{transform:translate(32px,34px) rotate(0)}50%{transform:translate(32px,31px) rotate(-5deg)}}.cap{animation:cap 3s ease-in-out infinite}
+@keyframes tassel{0%,100%{transform:translateX(0)}50%{transform:translateX(-2px)}}.tassel{animation:tassel 1.5s ease-in-out infinite}
+</style>
+<defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#eef1f4"/></pattern>
+<linearGradient id="flow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0969da" stop-opacity="0"/><stop offset=".5" stop-color="#0969da"/><stop offset="1" stop-color="#8250df" stop-opacity="0"/></linearGradient>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect x=".5" y=".5" width="899" height="115" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="1" y="1" width="898" height="114" rx="12" fill="url(#dots)"/>
+
+<g transform="translate(26,26)">
+  <rect width="64" height="64" rx="12" fill="#eef1f4" stroke="#d0d7de"/>
+  <g class="cap" transform="translate(32,34)">
+    <path d="M-20 -6 L0 -15 L20 -6 L0 3 Z" fill="#0969da"/>
+    <path d="M-11 -2 V8 C-11 13 11 13 11 8 V-2 L0 3 Z" fill="#4a78c4"/>
+    <line x1="18" y1="-6" x2="18" y2="8" stroke="#9a6700" stroke-width="1.6"/>
+    <circle class="tassel" cx="18" cy="10" r="2.6" fill="#9a6700"/>
+  </g>
+</g>
+<text x="112" y="50" font-size="17" font-weight="700" fill="#1f2328">Bachelor of Science (B.Sc)</text>
+<text class="mono" x="112" y="72" font-size="12" fill="#57606a">Jairam Arts and Science College, Salem</text>
+<g transform="translate(560,52)">
+  <text class="mono" x="0" y="4" font-size="12" fill="#24292f">2016</text>
+  <line x1="44" y1="0" x2="244" y2="0" stroke="#d0d7de" stroke-width="3" stroke-linecap="round"/>
+  <line class="prog" x1="44" y1="0" x2="244" y2="0" stroke="#0969da" stroke-width="3" stroke-linecap="round" stroke-dasharray="200"/>
+  <circle class="dot" cx="44" cy="0" r="5" fill="#0969da" filter="url(#glow)"/>
+  <text class="mono" x="256" y="4" font-size="12" fill="#24292f">2018</text>
+  <text class="mono grad" x="144" y="28" text-anchor="middle" font-size="10.5" fill="#1a7f37">✓ graduated</text>
+</g>
+</svg>
