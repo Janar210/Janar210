@@ -1,8 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="116" viewBox="0 0 900 116" role="img" aria-label="Education: B.Sc, Jairam Arts and Science College, Salem, 2016 to 2018">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="116" viewBox="0 0 900 116" role="img" aria-label="Education: B.Sc, Jairam Arts and Science College, Salem, 2016 to 2018, graduated">
 <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}@media (prefers-reduced-motion:reduce){*{animation:none!important}}
-@keyframes prog{0%{stroke-dashoffset:200}55%,100%{stroke-dashoffset:0}}.prog{animation:prog 5s ease-in-out infinite}
-@keyframes dot{0%{transform:translateX(0)}55%,100%{transform:translateX(200px)}}.dot{animation:dot 5s ease-in-out infinite}
-@keyframes grad{0%,55%{opacity:0}62%,95%{opacity:1}100%{opacity:0}}.grad{animation:grad 5s ease-in-out infinite}
+@keyframes ty{0%{clip-path:inset(0 100% 0 0)}18%,95%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 100% 0 0)}}.ty{animation:ty 6s steps(21) infinite}
+@keyframes bar{0%,19%{opacity:0}20%,95%{opacity:1}100%{opacity:0}}.bar{animation:bar 6s linear infinite}
+@keyframes cv0{0%,20.0%{fill:#30363d}20.4%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv0{animation:cv0 6s linear infinite}@keyframes cv1{0%,22.4%{fill:#30363d}22.8%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv1{animation:cv1 6s linear infinite}@keyframes cv2{0%,24.8%{fill:#30363d}25.1%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv2{animation:cv2 6s linear infinite}@keyframes cv3{0%,27.1%{fill:#30363d}27.5%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv3{animation:cv3 6s linear infinite}@keyframes cv4{0%,29.5%{fill:#30363d}29.9%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv4{animation:cv4 6s linear infinite}@keyframes cv5{0%,31.9%{fill:#30363d}32.3%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv5{animation:cv5 6s linear infinite}@keyframes cv6{0%,34.3%{fill:#30363d}34.6%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv6{animation:cv6 6s linear infinite}@keyframes cv7{0%,36.6%{fill:#30363d}37.0%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv7{animation:cv7 6s linear infinite}@keyframes cv8{0%,39.0%{fill:#30363d}39.4%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv8{animation:cv8 6s linear infinite}@keyframes cv9{0%,41.4%{fill:#30363d}41.8%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv9{animation:cv9 6s linear infinite}@keyframes cv10{0%,43.8%{fill:#30363d}44.1%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv10{animation:cv10 6s linear infinite}@keyframes cv11{0%,46.1%{fill:#30363d}46.5%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv11{animation:cv11 6s linear infinite}@keyframes cv12{0%,48.5%{fill:#30363d}48.9%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv12{animation:cv12 6s linear infinite}@keyframes cv13{0%,50.9%{fill:#30363d}51.3%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv13{animation:cv13 6s linear infinite}@keyframes cv14{0%,53.3%{fill:#30363d}53.6%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv14{animation:cv14 6s linear infinite}@keyframes cv15{0%,55.6%{fill:#30363d}56.0%,60%{fill:#70A5FD}62%,95%{fill:#3fb950}100%{fill:#30363d}}.cv15{animation:cv15 6s linear infinite}
+@keyframes dn{0%,63%{opacity:0;transform:translateY(3px)}67%,95%{opacity:1;transform:translateY(0)}100%{opacity:0}}.dn{animation:dn 6s ease-out infinite}
 @keyframes cap{0%,100%{transform:translate(32px,34px) rotate(0)}50%{transform:translate(32px,31px) rotate(-5deg)}}.cap{animation:cap 3s ease-in-out infinite}
 @keyframes tassel{0%,100%{transform:translateX(0)}50%{transform:translateX(-2px)}}.tassel{animation:tassel 1.5s ease-in-out infinite}
 </style>
@@ -24,11 +25,13 @@
 <text x="112" y="50" font-size="17" font-weight="700" fill="#e6edf3">Bachelor of Science (B.Sc)</text>
 <text class="mono" x="112" y="72" font-size="12" fill="#8b949e">Jairam Arts and Science College, Salem</text>
 <g transform="translate(560,52)">
-  <text class="mono" x="0" y="4" font-size="12" fill="#c9d1d9">2016</text>
-  <line x1="44" y1="0" x2="244" y2="0" stroke="#30363d" stroke-width="3" stroke-linecap="round"/>
-  <line class="prog" x1="44" y1="0" x2="244" y2="0" stroke="#70A5FD" stroke-width="3" stroke-linecap="round" stroke-dasharray="200"/>
-  <circle class="dot" cx="44" cy="0" r="5" fill="#70A5FD" filter="url(#glow)"/>
-  <text class="mono" x="256" y="4" font-size="12" fill="#c9d1d9">2018</text>
-  <text class="mono grad" x="144" y="28" text-anchor="middle" font-size="10.5" fill="#3fb950">✓ graduated</text>
+  <rect x="-4" y="-36" width="300" height="72" rx="7" fill="#010409" stroke="#30363d"/>
+  <text class="mono ty" x="8" y="-16" font-size="10.5" fill="#3fb950">$ <tspan fill="#c9d1d9">./graduate --status</tspan></text>
+  <g class="bar">
+    <text class="mono" x="8" y="3.5" font-size="10.5" fill="#c9d1d9">2016</text>
+    <path class="cv0" d="M41.0 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv1" d="M54.2 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv2" d="M67.4 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv3" d="M80.6 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv4" d="M93.8 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv5" d="M107.0 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv6" d="M120.2 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv7" d="M133.4 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv8" d="M146.6 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv9" d="M159.8 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv10" d="M173.0 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv11" d="M186.2 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv12" d="M199.4 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv13" d="M212.6 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv14" d="M225.8 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/><path class="cv15" d="M239.0 -7 h7 l6 6.5 l-6 6.5 h-7 l6 -6.5 z" fill="#30363d"/>
+    <text class="mono" x="286" y="3.5" text-anchor="end" font-size="10.5" fill="#c9d1d9">2018</text>
+  </g>
+  <text class="mono dn" x="8" y="24" font-size="10.5" fill="#3fb950">✔ done: Graduated</text>
 </g>
 </svg>
