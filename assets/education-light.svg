@@ -7,14 +7,14 @@
 @keyframes cap{0%,100%{transform:translate(32px,34px) rotate(0)}50%{transform:translate(32px,31px) rotate(-5deg)}}.cap{animation:cap 3s ease-in-out infinite}
 @keyframes tassel{0%,100%{transform:translateX(0)}50%{transform:translateX(-2px)}}.tassel{animation:tassel 1.5s ease-in-out infinite}
 </style>
-<defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#eef1f4"/></pattern>
+<defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#f6f8fa"/></pattern>
 <linearGradient id="flow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0969da" stop-opacity="0"/><stop offset=".5" stop-color="#0969da"/><stop offset="1" stop-color="#8250df" stop-opacity="0"/></linearGradient>
 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
 <rect x=".5" y=".5" width="899" height="115" rx="12" fill="#ffffff" stroke="#d0d7de"/>
 <rect x="1" y="1" width="898" height="114" rx="12" fill="url(#dots)"/>
 
 <g transform="translate(26,26)">
-  <rect width="64" height="64" rx="12" fill="#eef1f4" stroke="#d0d7de"/>
+  <rect width="64" height="64" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
   <g class="cap" transform="translate(32,34)">
     <path d="M-20 -6 L0 -15 L20 -6 L0 3 Z" fill="#0969da"/>
     <path d="M-11 -2 V8 C-11 13 11 13 11 8 V-2 L0 3 Z" fill="#4a78c4"/>
@@ -25,7 +25,7 @@
 <text x="112" y="50" font-size="17" font-weight="700" fill="#1f2328">Bachelor of Science (B.Sc)</text>
 <text class="mono" x="112" y="72" font-size="12" fill="#57606a">Jairam Arts and Science College, Salem</text>
 <g transform="translate(578,58)">
-  <rect x="-4" y="-36" width="300" height="72" rx="7" fill="#eef1f4" stroke="#d0d7de"/>
+  <rect x="-4" y="-36" width="300" height="72" rx="7" fill="#f6f8fa" stroke="#d0d7de"/>
   <text class="mono ty" x="8" y="-16.25" font-size="10.5" fill="#1a7f37">$ <tspan fill="#24292f">./graduate --status</tspan></text>
   <g class="bar" transform="translate(0,1.25)">
     <text class="mono" x="8" y="3.56" font-size="11" fill="#24292f">2016</text>
