@@ -67,8 +67,8 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
     <rect width="234" height="30" rx="7" fill="#dafbe1" stroke="#1a7f37" stroke-opacity=".5"/>
     <circle class="ping" cx="16" cy="15" r="4" fill="#1a7f37"/>
     <circle class="liveRing" cx="16" cy="15" r="4" fill="none" stroke="#1a7f37"/>
-    <text x="28" y="19.5" font-size="11" font-weight="700" fill="#1a7f37" letter-spacing="1.5">LIVE</text>
-    <text x="222" y="19" text-anchor="end" font-size="9" fill="#6e7781">on-call · prod</text>
+    <text x="28" y="18.6" font-size="11" font-weight="700" fill="#1a7f37" letter-spacing="1.5">LIVE</text>
+    <text x="222" y="17.4" text-anchor="end" font-size="9" fill="#6e7781">on-call · prod</text>
   </g>
   <g transform="translate(0,60)">
   <!-- glow behind scene -->
@@ -152,12 +152,12 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   <!-- commit feed -->
   <g transform="translate(14,432)">
     <rect width="234" height="96" rx="7" fill="#eef1f4" stroke="#d0d7de"/>
-    <text x="10" y="18" font-size="9" fill="#6e7781">$ git log --oneline</text>
+    <text x="10" y="17.25" font-size="9" fill="#6e7781">$ git log --oneline</text>
     <text class="c1" x="10" y="38" font-size="9.5"><tspan fill="#9a6700">a41f9c2</tspan><tspan fill="#24292f"> feat: tenant RBAC</tspan></text>
     <text class="c2" x="10" y="56" font-size="9.5"><tspan fill="#9a6700">7d2e0b1</tspan><tspan fill="#24292f"> perf: index queries</tspan></text>
     <text class="c3" x="10" y="74" font-size="9.5"><tspan fill="#9a6700">c93a5e4</tspan><tspan fill="#24292f"> ci: docker deploy</tspan></text>
     <circle class="ping" cx="190" cy="15" r="3" fill="#1a7f37"/>
-    <text x="198" y="18" font-size="8.5" fill="#1a7f37">pushed</text>
+    <text x="198" y="17.25" font-size="8.5" fill="#1a7f37">pushed</text>
   </g>
   <text x="131.0" y="546" text-anchor="middle" font-size="9.5" fill="#6e7781">shipping code · {24/7}</text>
 </g>
