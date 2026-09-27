@@ -61,7 +61,7 @@
 ## 📊 GitHub Activity
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=Janar210&theme=default&hide_border=true&background=FFFFFF&ring=0969DA&fire=8250DF&currStreakLabel=0969DA"><img height="165" src="https://streak-stats.demolab.com?user=Janar210&theme=tokyonight-duo&hide_border=true&background=0D1117&ring=70A5FD&fire=BF91F3&currStreakLabel=70A5FD" /></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=Janar210&theme=default&hide_border=true&background=FFFFFF&ring=0969DA&fire=8250DF&currStreakLabel=0969DA"><img height="165" src="https://streak-stats.demolab.com?user=Janar210&theme=tokyonight-duo&hide_border=true&background=00000000&ring=70A5FD&fire=BF91F3&currStreakLabel=70A5FD" /></picture>
 </p>
 
 <p align="center">
