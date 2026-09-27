@@ -135,7 +135,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   <!-- laptop: we see the back of the lid; the screen and keyboard face the developer, so the
        base sits behind the lid (hidden) and only the hinge shows where the lid meets the desk -->
   <path d="M93 280 V230 Q93 226 97 226 H165 Q169 226 169 230 V280 Z" fill="#2a3140" stroke="#3d4656"/>
-  <text x="131" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#70A5FD" class="logo">{ }</text>
+  <text x="131" y="255.5" text-anchor="middle" font-size="15" font-weight="700" fill="#70A5FD" class="logo">{ }</text>
   <rect x="91" y="277" width="80" height="4" rx="2" fill="#3d4656"/>
 
   <!-- mug + steam -->
