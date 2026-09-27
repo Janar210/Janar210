@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195" role="img" aria-label="159 total contributions, current streak 3 days, longest streak 3 days">
+<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.f{opacity:0;animation:fade .6s ease-out forwards}.d1{animation-delay:.2s}.d2{animation-delay:.5s}.d3{animation-delay:.8s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}</style>
+<defs><linearGradient id="dv" gradientUnits="userSpaceOnUse" x1="0" y1="28" x2="0" y2="170">
+<stop offset="0" stop-color="#8b949e" stop-opacity="0"/><stop offset=".5" stop-color="#8b949e" stop-opacity=".55"/><stop offset="1" stop-color="#8b949e" stop-opacity="0"/></linearGradient></defs>
+<line x1="165" x2="165" y1="28" y2="170" stroke="url(#dv)" stroke-width="1"/><line x1="330" x2="330" y1="28" y2="170" stroke="url(#dv)" stroke-width="1"/>
+<g class="f d1" text-anchor="middle">
+<text x="82.5" y="79" font-size="28" font-weight="700" fill="#70A5FD">159</text>
+<text x="82.5" y="114" font-size="14" fill="#70A5FD">Total Contributions</text>
+<text x="82.5" y="145" font-size="12" fill="#38BDAE">Feb 11, 2022 - Present</text>
+</g>
+<circle class="f d2" cx="247.5" cy="71" r="40" fill="none" stroke="#70A5FD" stroke-width="5"
+  stroke-dasharray="221.3 30" transform="rotate(-68.51 247.5 71)"/>
+<g class="f d2"><path transform="translate(247.5 22)" fill="#BF91F3" d="M0-11C5-6 8-2 8 3A8 8 0 0 1-8 3C-8-2-5-4-3-8C-2-4-1-3 1-2C2-5 1-8 0-11ZM0 0C-2 2-3 3-3 5A3 3 0 0 0 3 5C3 3 2 2 0 0Z" fill-rule="evenodd"/>
+<text x="247.5" y="80" text-anchor="middle" font-size="28" font-weight="700" fill="#BF91F3">3</text>
+<text x="247.5" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#70A5FD">Current Streak</text>
+<text x="247.5" y="164" text-anchor="middle" font-size="12" fill="#38BDAE">Sep 25 - Sep 27</text>
+</g>
+<g class="f d3" text-anchor="middle">
+<text x="412.5" y="79" font-size="28" font-weight="700" fill="#70A5FD">3</text>
+<text x="412.5" y="114" font-size="14" fill="#70A5FD">Longest Streak</text>
+<text x="412.5" y="145" font-size="12" fill="#38BDAE">Sep 25 - Sep 27</text>
+</g>
+</svg>
