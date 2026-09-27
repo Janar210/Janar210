@@ -132,10 +132,11 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   <rect x="14" y="280" width="234" height="9" rx="3" fill="#d0d7de"/>
   <rect x="26" y="289" width="7" height="58" fill="#e1e4e8"/><rect x="229" y="289" width="7" height="58" fill="#e1e4e8"/>
 
-  <!-- laptop (back of lid facing us) -->
-  <path d="M90 280 L100 228 H162 L172 280 Z" fill="#2a3140" stroke="#3d4656"/>
+  <!-- laptop: we see the back of the lid; the screen and keyboard face the developer, so the
+       base sits behind the lid (hidden) and only the hinge shows where the lid meets the desk -->
+  <path d="M93 280 V230 Q93 226 97 226 H165 Q169 226 169 230 V280 Z" fill="#2a3140" stroke="#3d4656"/>
   <text x="131" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0969da" class="logo">{ }</text>
-  <rect x="80" y="277" width="102" height="5" rx="2" fill="#3d4656"/>
+  <rect x="91" y="277" width="80" height="4" rx="2" fill="#3d4656"/>
 
   <!-- mug + steam -->
   <rect x="200" y="258" width="20" height="22" rx="3" fill="#8250df"/>
@@ -151,7 +152,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   <!-- stem and a small flower, swaying like the leaves -->
   <g class="flw">
     <path d="M44 262 C44 250 44 244 44 232" stroke="#2ea043" stroke-width="2"/>
-    <g transform="translate(44 229)"><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(0)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(72)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(144)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(216)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(288)"/><circle r="1.9" fill="#9a6700"/></g>
+    <g transform="translate(44 229)"><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(0)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(72)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(144)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(216)"/><ellipse cy="-3.3" rx="2.3" ry="3.3" fill="#8250df" transform="rotate(288)"/><circle r="1.9" fill="#ffffff"/></g>
   </g>
 
   </g>
