@@ -5,5 +5,5 @@
 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
 <rect x=".5" y=".5" width="899" height="63" rx="12" fill="#ffffff" stroke="#d0d7de"/>
 <rect x="1" y="1" width="898" height="62" rx="12" fill="url(#dots)"/>
-<text class="open" x="236.2" y="38.95" text-anchor="end" font-size="26.6" font-weight="700" fill="#8250df">«</text><text class="mono typed" x="244.2" y="37" font-size="14" fill="#24292f" font-style="italic">Write code that scales, not just code that works.</text><text class="close" x="661.8" y="38.95" font-size="26.6" font-weight="700" fill="#8250df">»</text><rect class="caret" x="222.2" y="23" width="8" height="18" fill="#0969da"/>
+<text class="open" x="236.2" y="38.95" text-anchor="end" font-size="26.6" font-weight="700" fill="#8250df">«</text><text class="mono typed" x="244.2" y="37" font-size="14" fill="#24292f" font-style="italic" textLength="411.6" lengthAdjust="spacingAndGlyphs">Write code that scales, not just code that works.</text><text class="close" x="661.8" y="38.95" font-size="26.6" font-weight="700" fill="#8250df">»</text><rect class="caret" x="222.2" y="23" width="8" height="18" fill="#0969da"/>
 </svg>
