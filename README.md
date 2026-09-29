@@ -53,7 +53,7 @@
 ## 🚀 Featured Work
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects-light.svg"><img src="./assets/projects.svg" width="100%" alt="Featured work: Multi-Tenant SaaS, CI/CD and Microservices, Real-Time Dashboards"/></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects-light.svg"><img src="./assets/projects.svg" width="100%" alt="Featured work: Multi-Tenant SaaS Platform, Production Stability Fix, Real-Time Notifications, CI/CD and Faster Releases, Monitoring and Observability, Database Performance"/></picture>
 </p>
 
 ---
