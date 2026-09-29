@@ -32,12 +32,12 @@
 
 ---
 
-## 🏗️ How I Build — Request Lifecycle
+## 🏗️ How I Build — Deploy to Response
 
-> One request, end to end: in through the gateway, authenticated by Keycloak, served from PostgreSQL, answered back to the user, then fanned out through Kafka to an email and a live WebSocket update.
+> A git push is built, tested and shipped to ECS; one request travels end to end; then a Quartz job reminds the team and marks an unfinished project overdue, with a trace and live log on the same clock.
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/architecture-light.svg"><img src="./assets/architecture.svg" width="100%" alt="Animated request lifecycle: user request through CloudFront and API Gateway, Keycloak JWT check, Spring Boot service and PostgreSQL, 200 OK response back to the user, then Kafka events to notify and realtime services, with a trace waterfall"/></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/architecture-light.svg"><img src="./assets/architecture.svg" width="100%" alt="CI/CD deploy with GitHub Actions, Docker, ECR and ECS, then a request through CloudFront, API Gateway, Keycloak, Spring Boot, PostgreSQL and Kafka, then a Quartz job that sends due-date reminders and marks unfinished projects overdue"/></picture>
 </p>
 
 ---
