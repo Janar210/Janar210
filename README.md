@@ -11,7 +11,7 @@
 
 <!-- ======================= IMPACT AT A GLANCE ======================= -->
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/metrics-light.svg"><img src="./assets/metrics.svg" width="100%" alt="Impact: 99.9% uptime, 70% less downtime, 40% faster DB, 50% faster releases, 85%+ coverage"/></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/metrics-light.svg"><img src="./assets/metrics.svg" width="100%" alt="Impact: 99.9% uptime, thousands of concurrent users, 70% less downtime, 40% faster database, 50% faster releases, 85%+ test coverage, 40% fewer post-release bugs, 50+ secure REST APIs"/></picture>
 </p>
 
 ---
