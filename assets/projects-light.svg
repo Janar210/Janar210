@@ -20,8 +20,6 @@
 .fw-go{offset-rotate:0deg;animation:fwgo 2.2s ease-in-out infinite}
 .fw-go1{offset-path:path("M28 36C44 36 50 18 64 18")}.fw-go2{offset-path:path("M28 44C44 44 50 62 64 62");animation-delay:.6s}
 @keyframes fwgo{0%{offset-distance:0%;opacity:0}15%{opacity:1}80%{opacity:1}100%{offset-distance:100%;opacity:0}}
-.fw-bell{transform-origin:78px 16px;animation:fwbell 2.2s ease-in-out infinite}
-@keyframes fwbell{0%,55%,100%{transform:rotate(0)}65%{transform:rotate(14deg)}75%{transform:rotate(-12deg)}85%{transform:rotate(6deg)}}
 .fw-node{fill:currentColor;stroke:currentColor;stroke-width:1.8;animation:4s steps(1,end) infinite}
 .fw-n1{animation-name:fwn1}.fw-n2{animation-name:fwn2}.fw-n3{animation-name:fwn3}.fw-n4{animation-name:fwn4}
 @keyframes fwn1{0%,92%{fill:currentColor}100%{fill:var(--panel)}}
