@@ -53,8 +53,9 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
 @keyframes read{0%,14%{transform:translate(1.1px,.8px)}18%,32%{transform:translate(.55px,.8px)}36%,50%{transform:translate(0,.8px)}54%,68%{transform:translate(-.55px,.8px)}72%,86%{transform:translate(-1.1px,.8px)}93%,100%{transform:translate(1.1px,.8px)}}
 .pupilIdle{transform:translate(1.1px,.8px);animation:read 3.6s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.pupilIdle{animation:none}}
-.tracking .headIdle,.tracking .faceIdle,.tracking .pupilIdle{animation:none}
-.tracking .pupilIdle{transform:none}
+.tracking .headIdle,.tracking .faceIdle{animation:none}
+/* reading pauses (not resets) while the eyes follow the mouse, so afterwards it carries on from the same step */
+.tracking .pupilIdle{animation-play-state:paused}
 .mouthSmile,.blush{opacity:0;transition:opacity .25s}
 .mouthCalm{transition:opacity .25s}
 .happy .mouthSmile{opacity:1}.happy .blush{opacity:.35}.happy .mouthCalm{opacity:0}
@@ -252,6 +253,7 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
   var zone=svg.querySelector('#lookZone'),head=svg.querySelector('#headPtr'),face=svg.querySelector('#facePtr'),
       hair=svg.querySelector('#hairPtr'),pupil=svg.querySelector('#pupilPtr'),brow=svg.querySelector('#browPtr');
   var HX=769,HY=240;
+  var pIdle=svg.querySelector('.pupilIdle'),idle={x:0,y:0};
   var cur={x:0,y:0},tgt={x:0,y:0},eye={x:0,y:0},eyeT={x:0,y:0},active=false,raf=0,near=false;
   function clamp(v){return Math.max(-1,Math.min(1,v));}
   function toSvg(e){var p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
@@ -262,7 +264,7 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
     set(head,'rotate('+(x*9).toFixed(2)+' 131 200) translate('+(x*2).toFixed(2)+' '+(y*2).toFixed(2)+')');
     set(face,'translate('+(x*5.5).toFixed(2)+' '+(y*(0>y?3:4.5)).toFixed(2)+')');
     set(hair,'translate('+(x*2.5).toFixed(2)+' '+(y*(0>y?3:4.5)).toFixed(2)+') translate(131 170) skewX('+(Math.atan(x*6/26)*57.3).toFixed(2)+') scale(1 '+(1+y*(0>y?.25:.22)).toFixed(3)+') translate(-131 -170)');
-    set(pupil,'translate('+(eye.x*2.1).toFixed(2)+' '+(eye.y*2.1).toFixed(2)+')');
+    set(pupil,'translate('+(eye.x*2.1-idle.x).toFixed(2)+' '+(eye.y*2.1-idle.y).toFixed(2)+')');
     set(brow,'translate(0 '+(Math.min(0,y)*0.3).toFixed(2)+')');
     
     var moving=Math.abs(tgt.x-cur.x)+Math.abs(tgt.y-cur.y)+Math.abs(eyeT.x-eye.x)+Math.abs(eyeT.y-eye.y)>.002;
@@ -275,8 +277,9 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
     tgt.x=clamp(dx/150);tgt.y=clamp(dy/(0>dy?60:160));
     var d=Math.max(Math.hypot(dx,dy),40);eyeT.x=dx/d;eyeT.y=dy/d;
     near=55>Math.hypot(dx,dy);
+    if(!svg.classList.contains('tracking')){var m=new DOMMatrix(getComputedStyle(pIdle).transform);idle.x=m.e;idle.y=m.f;eye.x=idle.x/2.1;eye.y=idle.y/2.1;}   // remember the reading step the eyes are on (reading pauses there)
     active=true;svg.classList.add('tracking');kick();
   });
-  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=1.1/2.1;eyeT.y=.8/2.1;kick();});   // eyes glide straight back to the laptop, to where the reading animation starts (1.1px, 0.8px), no stop at a straight-ahead stare
+  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=idle.x/2.1;eyeT.y=idle.y/2.1;kick();});   // eyes glide back to the exact spot on the laptop line where reading paused, then reading carries on from that step
 })();</script>
 </svg>
