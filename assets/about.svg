@@ -12,7 +12,8 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
 @keyframes commit{0%{opacity:0;transform:translateX(-6px)}8%,86%{opacity:1;transform:translateX(0)}94%,100%{opacity:0}}
 @keyframes cm2{0%,11%{opacity:0;transform:translateX(-6px)}19%,86%{opacity:1;transform:translateX(0)}94%,100%{opacity:0}}
 @keyframes cm3{0%,22%{opacity:0;transform:translateX(-6px)}30%,86%{opacity:1;transform:translateX(0)}94%,100%{opacity:0}}
-.c1{opacity:0;animation:commit 7s ease-out infinite}.c2{opacity:0;animation:cm2 7s ease-out infinite}.c3{opacity:0;animation:cm3 7s ease-out infinite}
+@keyframes cm4{0%,33%{opacity:0;transform:translateX(-6px)}41%,86%{opacity:1;transform:translateX(0)}94%,100%{opacity:0}}
+.c1{opacity:0;animation:commit 7s ease-out infinite}.c2{opacity:0;animation:cm2 7s ease-out infinite}.c3{opacity:0;animation:cm3 7s ease-out infinite}.c4{opacity:0;animation:cm4 7s ease-out infinite}
 @keyframes blink{50%{opacity:0}}.blink{animation:blink 1s steps(1) infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(1.6px)}}.bob{animation:bob 2.4s ease-in-out infinite}
 @keyframes tap{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
@@ -228,9 +229,10 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   <g transform="translate(14,432)">
     <rect width="234" height="96" rx="7" fill="#161b22" stroke="#30363d"/>
     <text x="10" y="17.25" font-size="9" fill="#6e7681">$ git log --oneline</text>
-    <text class="c1" x="10" y="41" font-size="9.5"><tspan fill="#f0b72f">a41f9c2</tspan><tspan fill="#c9d1d9"> feat: tenant RBAC</tspan></text>
-    <text class="c2" x="10" y="61.5" font-size="9.5"><tspan fill="#f0b72f">7d2e0b1</tspan><tspan fill="#c9d1d9"> perf: index queries</tspan></text>
-    <text class="c3" x="10" y="82" font-size="9.5"><tspan fill="#f0b72f">c93a5e4</tspan><tspan fill="#c9d1d9"> ci: docker deploy</tspan></text>
+    <text class="c1" x="10" y="36.5" font-size="9.5"><tspan fill="#f0b72f">a41f9c2</tspan><tspan fill="#c9d1d9"> feat: tenant RBAC</tspan></text>
+    <text class="c2" x="10" y="53" font-size="9.5"><tspan fill="#f0b72f">7d2e0b1</tspan><tspan fill="#c9d1d9"> perf: index queries</tspan></text>
+    <text class="c3" x="10" y="69.5" font-size="9.5"><tspan fill="#f0b72f">c93a5e4</tspan><tspan fill="#c9d1d9"> ci: docker deploy</tspan></text>
+    <text class="c4" x="10" y="86" font-size="9.5"><tspan fill="#f0b72f">f18b6d3</tspan><tspan fill="#c9d1d9"> fix: JWT refresh race</tspan></text>
     <circle class="ping" cx="190" cy="15" r="3" fill="#3fb950"/>
     <text x="198" y="17.25" font-size="8.5" fill="#3fb950">pushed</text>
   </g>
