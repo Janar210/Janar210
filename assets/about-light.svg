@@ -239,8 +239,8 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
     <text x="198" y="17.25" font-size="8.5" fill="#1a7f37">pushed</text>
   </g>
   <text x="131.0" y="546" text-anchor="middle" font-size="9.5" fill="#6e7781">shipping code · {24/7}</text>
-<!-- invisible hit area: only the space between the metrics card and the git log drives the head -->
-<rect id="lookZone" x="0" y="190" width="262" height="242" fill="transparent"/>
+<!-- invisible hit area: only the space between the metrics card and the desk top drives the head (nothing under the desk) -->
+<rect id="lookZone" x="0" y="190" width="262" height="159" fill="transparent"/>
 </g>
 <script>
 (function(){
