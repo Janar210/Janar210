@@ -8,8 +8,11 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
 @keyframes liveTxt{0%,49%{opacity:1}50%,100%{opacity:.25}}.liveTxt{animation:liveTxt 1.1s steps(1) infinite}
 @keyframes liveRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.8);opacity:0}}
 .liveRing{transform-box:fill-box;transform-origin:center;animation:liveRing 1.4s ease-out infinite}
-@keyframes commit{0%{opacity:0;transform:translateX(-6px)}8%,85%{opacity:1;transform:translateX(0)}100%{opacity:0}}
-.c1{animation:commit 7s ease-out infinite}.c2{opacity:0;animation:commit 7s ease-out .8s infinite}.c3{opacity:0;animation:commit 7s ease-out 1.6s infinite}
+/* git log: lines fade in one by one, then all fade out together */
+@keyframes commit{0%{opacity:0;transform:translateX(-6px)}8%,86%{opacity:1;transform:translateX(0)}94%,100%{opacity:0}}
+@keyframes cm2{0%,11%{opacity:0;transform:translateX(-6px)}19%,86%{opacity:1;transform:translateX(0)}94%,100%{opacity:0}}
+@keyframes cm3{0%,22%{opacity:0;transform:translateX(-6px)}30%,86%{opacity:1;transform:translateX(0)}94%,100%{opacity:0}}
+.c1{opacity:0;animation:commit 7s ease-out infinite}.c2{opacity:0;animation:cm2 7s ease-out infinite}.c3{opacity:0;animation:cm3 7s ease-out infinite}
 @keyframes blink{50%{opacity:0}}.blink{animation:blink 1s steps(1) infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(1.6px)}}.bob{animation:bob 2.4s ease-in-out infinite}
 @keyframes tap{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
@@ -22,8 +25,9 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
 .b4{animation:grow 2.6s ease-in-out .9s infinite}.b5{animation:grow 2.6s ease-in-out 1.2s infinite}
 @keyframes draw{0%{stroke-dashoffset:110}50%,100%{stroke-dashoffset:0}}.line{stroke-dasharray:110;animation:draw 4s ease-out infinite}
 @keyframes ping{0%,100%{opacity:.3}50%{opacity:1}}.ping,.ledp{animation:ping 1.4s ease-in-out infinite}
-@keyframes floatUp{0%{transform:translateY(0);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
-.float{animation:floatUp 5s ease-in-out infinite}.f2{animation-delay:1.2s}.f3{animation-delay:2.5s}.f4{animation-delay:3.7s}
+/* floating words: two lanes beside the developer, gone well before the metrics card */
+@keyframes floatUp{0%{transform:translateY(0);opacity:0}20%{opacity:1}60%{opacity:1}85%,100%{transform:translateY(-44px);opacity:0}}
+.float{opacity:0;animation:floatUp 5s linear infinite}.f2{animation-delay:1.25s}.f3{animation-delay:3.75s}.f4{animation-delay:2.5s}
 @keyframes steam{0%{transform:translateY(4px);opacity:0}40%{opacity:.8}100%{transform:translateY(-8px);opacity:0}}
 .steam{animation:steam 2.2s ease-out infinite}.s2{animation-delay:1.1s}
 @keyframes sway{0%,100%{transform:rotate(0)}50%{transform:rotate(-4deg)}}
@@ -40,15 +44,9 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
 .armR{transform-origin:166px 236px;animation:armR .32s ease-in-out .16s infinite}
 @keyframes blinkEye{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
 .eyes{transform-box:fill-box;transform-origin:center;animation:blinkEye 4.5s infinite}
-/* idle: no pointer (and on GitHub, where image-embedded SVGs never see the mouse) — he nods to the music,
-   glances up at the dashboard, then back to the laptop */
-@keyframes headIdle{0%,100%{transform:rotate(0)}8%{transform:rotate(-3deg)}16%{transform:rotate(1.5deg)}24%{transform:rotate(-2deg)}
-  34%,50%{transform:rotate(-7deg) translateY(-2px)}60%{transform:rotate(0)}70%,82%{transform:rotate(5deg)}90%{transform:rotate(0)}}
-@keyframes faceIdle{0%,24%,60%,90%,100%{transform:translate(0,0)}34%,50%{transform:translate(-4px,-4px)}70%,82%{transform:translate(4px,1px)}}
-@keyframes pupilIdle{0%,24%,60%,90%,100%{transform:translate(0,.8px)}34%,50%{transform:translate(-1.2px,-1.4px)}70%,82%{transform:translate(1.4px,0)}}
-.headIdle{transform-origin:131px 200px;animation:headIdle 9s ease-in-out infinite}
-.faceIdle{animation:faceIdle 9s ease-in-out infinite}
-.pupilIdle{animation:pupilIdle 9s ease-in-out infinite}
+/* no pointer (and on GitHub, where <img> SVGs never see the mouse): he just keeps his eyes on the laptop */
+.headIdle{transform-origin:131px 200px}
+.pupilIdle{transform:translate(0,.8px)}
 .tracking .headIdle,.tracking .faceIdle,.tracking .pupilIdle{animation:none}
 .mouthSmile,.blush{opacity:0;transition:opacity .25s}
 .mouthCalm{transition:opacity .25s}
@@ -121,10 +119,10 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   </g>
 
   <!-- floating tokens -->
-  <text class="float f1" x="22" y="190" font-size="13" fill="#70A5FD">&lt;/&gt;</text>
-  <text class="float f2" x="220" y="176" font-size="12" fill="#BF91F3">{ }</text>
-  <text class="float f3" x="190" y="136" font-size="9.5" fill="#3fb950">200 OK</text>
-  <text class="float f4" x="208" y="236" font-size="9.5" fill="#f0b72f">@Bean</text>
+  <text class="float f1" x="22" y="214" font-size="13" fill="#70A5FD">&lt;/&gt;</text>
+  <text class="float f2" x="224" y="214" font-size="12" fill="#BF91F3">{ }</text>
+  <text class="float f3" x="186" y="214" font-size="9.5" fill="#3fb950">200 OK</text>
+  <text class="float f4" x="52" y="214" font-size="9.5" fill="#f0b72f">@Bean</text>
 
   <!-- developer -->
 <g class="bob">
@@ -198,7 +196,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   <!-- laptop: we see the back of the lid; the screen and keyboard face the developer, so the
        base sits behind the lid (hidden) and only the hinge shows where the lid meets the desk -->
   <path d="M93 280 V230 Q93 226 97 226 H165 Q169 226 169 230 V280 Z" fill="#2a3140" stroke="#3d4656"/>
-  <text x="131" y="255.5" text-anchor="middle" font-size="15" font-weight="700" fill="#70A5FD" class="logo">{ }</text>
+  <text x="131" y="255.5" text-anchor="middle" font-size="15" font-weight="700" fill="#70A5FD" class="logo">✦</text>
   <rect x="91" y="277" width="80" height="4" rx="2" fill="#3d4656"/>
 <!-- keystroke sparks above the lid -->
 <text class="key k1" x="100" y="224" font-size="8" fill="#3fb950">;</text>
