@@ -50,8 +50,8 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
 /* no pointer (and on GitHub, where image-embedded SVGs never see the mouse): he just keeps his eyes on the laptop */
 .headIdle{transform-origin:131px 200px}
 /* reading: he faces us, so his left → right reads as right → left on screen: the eyes hop across a line in small jumps, then sweep back to start the next line */
-@keyframes read{0%,14%{transform:translate(1.1px,.8px)}18%,32%{transform:translate(.55px,.8px)}36%,50%{transform:translate(0,.8px)}54%,68%{transform:translate(-.55px,.8px)}72%,86%{transform:translate(-1.1px,.8px)}93%,100%{transform:translate(1.1px,.8px)}}
-.pupilIdle{transform:translate(1.1px,.8px);animation:read 3.6s ease-in-out infinite}
+@keyframes read{0%,14%{transform:translate(.7px,.8px)}18%,32%{transform:translate(.35px,.8px)}36%,50%{transform:translate(0,.8px)}54%,68%{transform:translate(-.35px,.8px)}72%,86%{transform:translate(-.7px,.8px)}93%,100%{transform:translate(.7px,.8px)}}
+.pupilIdle{transform:translate(.7px,.8px);animation:read 3.6s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.pupilIdle{animation:none}}
 .tracking .headIdle,.tracking .faceIdle{animation:none}
 /* reading pauses (not resets) while the eyes follow the mouse, so afterwards it carries on from the same step; the script pauses/resumes it
