@@ -54,7 +54,8 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
 .pupilIdle{transform:translate(1.1px,.8px);animation:read 3.6s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.pupilIdle{animation:none}}
 .tracking .headIdle,.tracking .faceIdle{animation:none}
-/* reading pauses (not resets) while the eyes follow the mouse, so afterwards it carries on from the same step */
+/* reading pauses (not resets) while the eyes follow the mouse, so afterwards it carries on from the same step; the script pauses/resumes it
+   through the Web Animations API, because the page drives these animations from JS and that overrides animation-play-state */
 .tracking .pupilIdle{animation-play-state:paused}
 .mouthSmile,.blush{opacity:0;transition:opacity .25s}
 .mouthCalm{transition:opacity .25s}
@@ -253,7 +254,7 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
   var zone=svg.querySelector('#lookZone'),head=svg.querySelector('#headPtr'),face=svg.querySelector('#facePtr'),
       hair=svg.querySelector('#hairPtr'),pupil=svg.querySelector('#pupilPtr'),brow=svg.querySelector('#browPtr');
   var HX=769,HY=240;
-  var pIdle=svg.querySelector('.pupilIdle'),idle={x:0,y:0};
+  var pIdle=svg.querySelector('.pupilIdle'),idle={x:0,y:0},held=[];
   var cur={x:0,y:0},tgt={x:0,y:0},eye={x:0,y:0},eyeT={x:0,y:0},active=false,raf=0,near=false;
   function clamp(v){return Math.max(-1,Math.min(1,v));}
   function toSvg(e){var p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
@@ -269,7 +270,7 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
     
     var moving=Math.abs(tgt.x-cur.x)+Math.abs(tgt.y-cur.y)+Math.abs(eyeT.x-eye.x)+Math.abs(eyeT.y-eye.y)>.002;
     if(active||moving){raf=requestAnimationFrame(frame);}
-    else{raf=0;svg.classList.remove('tracking');[head,face,hair,pupil,brow].forEach(function(el){el.removeAttribute('transform');});}
+    else{raf=0;svg.classList.remove('tracking');held.forEach(function(a){a.play();});held=[];[head,face,hair,pupil,brow].forEach(function(el){el.removeAttribute('transform');});}
   }
   function kick(){if(!raf)raf=requestAnimationFrame(frame);}
   zone.addEventListener('pointermove',function(e){
@@ -277,7 +278,7 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
     tgt.x=clamp(dx/150);tgt.y=clamp(dy/(0>dy?60:160));
     var d=Math.max(Math.hypot(dx,dy),40);eyeT.x=dx/d;eyeT.y=dy/d;
     near=55>Math.hypot(dx,dy);
-    if(!svg.classList.contains('tracking')){var m=new DOMMatrix(getComputedStyle(pIdle).transform);idle.x=m.e;idle.y=m.f;eye.x=idle.x/2.1;eye.y=idle.y/2.1;}   // remember the reading step the eyes are on (reading pauses there)
+    if(!svg.classList.contains('tracking')){held=pIdle.getAnimations().filter(function(a){return a.playState==='running';});held.forEach(function(a){a.pause();});var m=new DOMMatrix(getComputedStyle(pIdle).transform);idle.x=m.e;idle.y=m.f;eye.x=idle.x/2.1;eye.y=idle.y/2.1;}   // remember the reading step the eyes are on (reading pauses there)
     active=true;svg.classList.add('tracking');kick();
   });
   zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=idle.x/2.1;eyeT.y=idle.y/2.1;kick();});   // eyes glide back to the exact spot on the laptop line where reading paused, then reading carries on from that step
