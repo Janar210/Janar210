@@ -235,8 +235,8 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
     <text x="198" y="17.25" font-size="8.5" fill="#1a7f37">pushed</text>
   </g>
   <text x="131.0" y="546" text-anchor="middle" font-size="9.5" fill="#6e7781">shipping code · {24/7}</text>
-<!-- invisible hit area: only this block drives the head -->
-<rect id="lookZone" x="0" y="0" width="262" height="560" fill="transparent"/>
+<!-- invisible hit area: only the space between the metrics card and the git log drives the head -->
+<rect id="lookZone" x="0" y="190" width="262" height="242" fill="transparent"/>
 </g>
 <script>
 (function(){
@@ -257,7 +257,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
     set(hair,'translate('+(x*2.5).toFixed(2)+' '+(y*(0>y?3:4.5)).toFixed(2)+') translate(131 170) skewX('+(Math.atan(x*6/26)*57.3).toFixed(2)+') scale(1 '+(1+y*(0>y?.25:.22)).toFixed(3)+') translate(-131 -170)');
     set(pupil,'translate('+(eye.x*2.1).toFixed(2)+' '+(eye.y*2.1).toFixed(2)+')');
     set(brow,'translate(0 '+(Math.min(0,y)*0.3).toFixed(2)+')');
-    svg.classList.toggle('happy',near);
+    
     var moving=Math.abs(tgt.x-cur.x)+Math.abs(tgt.y-cur.y)+Math.abs(eyeT.x-eye.x)+Math.abs(eyeT.y-eye.y)>.002;
     if(active||moving){raf=requestAnimationFrame(frame);}
     else{raf=0;svg.classList.remove('tracking');[head,face,hair,pupil,brow].forEach(function(el){el.removeAttribute('transform');});}
@@ -265,7 +265,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   function kick(){if(!raf)raf=requestAnimationFrame(frame);}
   zone.addEventListener('pointermove',function(e){
     var p=toSvg(e),dx=p.x-HX,dy=p.y-HY;
-    tgt.x=clamp(dx/150);tgt.y=clamp(dy/160);
+    tgt.x=clamp(dx/150);tgt.y=clamp(dy/(0>dy?60:160));
     var d=Math.max(Math.hypot(dx,dy),40);eyeT.x=dx/d;eyeT.y=dy/d;
     near=55>Math.hypot(dx,dy);
     active=true;svg.classList.add('tracking');kick();
