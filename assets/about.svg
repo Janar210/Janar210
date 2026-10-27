@@ -49,7 +49,10 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
 .eyes{transform-box:fill-box;transform-origin:center;animation:blinkEye 4.5s infinite}
 /* no pointer (and on GitHub, where image-embedded SVGs never see the mouse): he just keeps his eyes on the laptop */
 .headIdle{transform-origin:131px 200px}
-.pupilIdle{transform:translate(0,.8px)}
+/* reading: while looking down at the laptop the eyes hop left → right along a line in small jumps, then sweep back to start the next line */
+@keyframes read{0%,14%{transform:translate(-1.1px,.8px)}18%,32%{transform:translate(-.55px,.8px)}36%,50%{transform:translate(0,.8px)}54%,68%{transform:translate(.55px,.8px)}72%,86%{transform:translate(1.1px,.8px)}93%,100%{transform:translate(-1.1px,.8px)}}
+.pupilIdle{transform:translate(-1.1px,.8px);animation:read 3.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.pupilIdle{animation:none}}
 .tracking .headIdle,.tracking .faceIdle,.tracking .pupilIdle{animation:none}
 .tracking .pupilIdle{transform:none}
 .mouthSmile,.blush{opacity:0;transition:opacity .25s}
@@ -274,6 +277,6 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
     near=55>Math.hypot(dx,dy);
     active=true;svg.classList.add('tracking');kick();
   });
-  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=0;eyeT.y=.8/2.1;kick();});   // eyes glide straight back to the laptop (the idle .pupilIdle 0.8px look-down), no stop at a straight-ahead stare
+  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=-1.1/2.1;eyeT.y=.8/2.1;kick();});   // eyes glide straight back to the laptop, to where the reading animation starts (-1.1px, 0.8px), no stop at a straight-ahead stare
 })();</script>
 </svg>
