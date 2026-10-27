@@ -274,6 +274,6 @@ svg,text{-webkit-user-select:none;user-select:none;cursor:default}
     near=55>Math.hypot(dx,dy);
     active=true;svg.classList.add('tracking');kick();
   });
-  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=0;eyeT.y=0;kick();});
+  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=0;eyeT.y=.8/2.1;kick();});   // eyes glide straight back to the laptop (the idle .pupilIdle 0.8px look-down), no stop at a straight-ahead stare
 })();</script>
 </svg>
