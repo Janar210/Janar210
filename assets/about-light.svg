@@ -48,6 +48,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
 .headIdle{transform-origin:131px 200px}
 .pupilIdle{transform:translate(0,.8px)}
 .tracking .headIdle,.tracking .faceIdle,.tracking .pupilIdle{animation:none}
+.tracking .pupilIdle{transform:none}
 .mouthSmile,.blush{opacity:0;transition:opacity .25s}
 .mouthCalm{transition:opacity .25s}
 .happy .mouthSmile{opacity:1}.happy .blush{opacity:.35}.happy .mouthCalm{opacity:0}
@@ -59,6 +60,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 <defs>
+<clipPath id="eyeClip"><ellipse cx="122" cy="181" rx="3.6" ry="3.8"/><ellipse cx="140" cy="181" rx="3.6" ry="3.8"/></clipPath>
   <clipPath id="codeClip"><rect x="0" y="64" width="606" height="466"/></clipPath>
   <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#f6f8fa"/></pattern>
   <radialGradient id="halo"><stop offset="0" stop-color="#0969da" stop-opacity=".16"/><stop offset="1" stop-color="#0969da" stop-opacity="0"/></radialGradient>
@@ -153,10 +155,10 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
       <g class="eyes">
         <ellipse cx="122" cy="181" rx="3.6" ry="3.8" fill="#f4efe9"/>
         <ellipse cx="140" cy="181" rx="3.6" ry="3.8" fill="#f4efe9"/>
-        <g id="pupilPtr"><g class="pupilIdle">
+        <g clip-path="url(#eyeClip)"><g id="pupilPtr"><g class="pupilIdle">
           <circle cx="122" cy="181.4" r="2.2" fill="#1c1c24"/><circle cx="140" cy="181.4" r="2.2" fill="#1c1c24"/>
           <circle cx="122.8" cy="180.5" r=".7" fill="#fff"/><circle cx="140.8" cy="180.5" r=".7" fill="#fff"/>
-        </g></g>
+        </g></g></g>
       </g>
       <path d="M130 184 Q131 188 133 187.5" fill="none" stroke="#a86d43" stroke-width="1.4" stroke-linecap="round"/>
       <!-- mouth: calm line, swaps to a smile when the pointer is near the face -->
@@ -196,7 +198,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   <!-- laptop: we see the back of the lid; the screen and keyboard face the developer, so the
        base sits behind the lid (hidden) and only the hinge shows where the lid meets the desk -->
   <path d="M93 280 V230 Q93 226 97 226 H165 Q169 226 169 230 V280 Z" fill="#2a3140" stroke="#3d4656"/>
-  <text x="131" y="255.5" text-anchor="middle" font-size="15" font-weight="700" fill="#0969da" class="logo">✦</text>
+  <text x="131" y="257" text-anchor="middle" font-size="19" font-weight="700" fill="#0969da" class="logo">✦</text>
   <rect x="91" y="277" width="80" height="4" rx="2" fill="#3d4656"/>
 <!-- keystroke sparks above the lid -->
 <text class="key k1" x="100" y="224" font-size="8" fill="#1a7f37">;</text>
@@ -243,20 +245,20 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   var zone=svg.querySelector('#lookZone'),head=svg.querySelector('#headPtr'),face=svg.querySelector('#facePtr'),
       hair=svg.querySelector('#hairPtr'),pupil=svg.querySelector('#pupilPtr'),brow=svg.querySelector('#browPtr');
   var HX=769,HY=240;
-  var cur={x:0,y:0},tgt={x:0,y:0},active=false,raf=0,near=false;
+  var cur={x:0,y:0},tgt={x:0,y:0},eye={x:0,y:0},eyeT={x:0,y:0},active=false,raf=0,near=false;
   function clamp(v){return Math.max(-1,Math.min(1,v));}
   function toSvg(e){var p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
   function set(el,t){el.setAttribute('transform',t);}
   function frame(){
-    cur.x+=(tgt.x-cur.x)*.14;cur.y+=(tgt.y-cur.y)*.14;
+    cur.x+=(tgt.x-cur.x)*.14;cur.y+=(tgt.y-cur.y)*.14;eye.x+=(eyeT.x-eye.x)*.22;eye.y+=(eyeT.y-eye.y)*.22;
     var x=cur.x,y=cur.y;
     set(head,'rotate('+(x*9).toFixed(2)+' 131 200) translate('+(x*2).toFixed(2)+' '+(y*2).toFixed(2)+')');
-    set(face,'translate('+(x*5.5).toFixed(2)+' '+(y*4.5).toFixed(2)+')');
-    set(hair,'translate('+(x*2.5).toFixed(2)+' '+(y*1.5).toFixed(2)+')');
-    set(pupil,'translate('+(x*1.6).toFixed(2)+' '+(y*1.6).toFixed(2)+')');
-    set(brow,'translate(0 '+(Math.min(0,y)*2.2).toFixed(2)+')');
+    set(face,'translate('+(x*5.5).toFixed(2)+' '+(y*(0>y?3:4.5)).toFixed(2)+')');
+    set(hair,'translate('+(x*2.5).toFixed(2)+' '+(y*(0>y?3:4.5)).toFixed(2)+') translate(131 170) skewX('+(Math.atan(x*6/26)*57.3).toFixed(2)+') scale(1 '+(1+y*(0>y?.25:.22)).toFixed(3)+') translate(-131 -170)');
+    set(pupil,'translate('+(eye.x*2.1).toFixed(2)+' '+(eye.y*2.1).toFixed(2)+')');
+    set(brow,'translate(0 '+(Math.min(0,y)*0.3).toFixed(2)+')');
     svg.classList.toggle('happy',near);
-    var moving=Math.abs(tgt.x-cur.x)+Math.abs(tgt.y-cur.y)>.002;
+    var moving=Math.abs(tgt.x-cur.x)+Math.abs(tgt.y-cur.y)+Math.abs(eyeT.x-eye.x)+Math.abs(eyeT.y-eye.y)>.002;
     if(active||moving){raf=requestAnimationFrame(frame);}
     else{raf=0;svg.classList.remove('tracking');[head,face,hair,pupil,brow].forEach(function(el){el.removeAttribute('transform');});}
   }
@@ -264,9 +266,10 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
   zone.addEventListener('pointermove',function(e){
     var p=toSvg(e),dx=p.x-HX,dy=p.y-HY;
     tgt.x=clamp(dx/150);tgt.y=clamp(dy/160);
+    var d=Math.max(Math.hypot(dx,dy),40);eyeT.x=dx/d;eyeT.y=dy/d;
     near=55>Math.hypot(dx,dy);
     active=true;svg.classList.add('tracking');kick();
   });
-  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;kick();});
+  zone.addEventListener('pointerleave',function(){active=false;near=false;tgt.x=0;tgt.y=0;eyeT.x=0;eyeT.y=0;kick();});
 })();</script>
 </svg>
