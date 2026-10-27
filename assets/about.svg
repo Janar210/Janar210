@@ -1,6 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-label="About me: a Java class describing Janarthanan Narayanasamy, Senior Java Backend Developer at Astravue Technologies, beside an animated illustration of a developer at a desk">
 <style>
 text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;white-space:pre}
+/* text is part of the picture: no selecting it, normal arrow pointer (the character still follows the mouse) */
+svg,text{-webkit-user-select:none;user-select:none;cursor:default}
 @keyframes scroll{0%,18%{transform:translateY(0)}55%,75%{transform:translateY(-0px)}97%,100%{transform:translateY(0)}}
 .scroll{animation:scroll 16s cubic-bezier(.45,0,.2,1) infinite}
 @keyframes thumb{0%,18%{transform:translateY(0)}55%,75%{transform:translateY(-6.1px)}97%,100%{transform:translateY(0)}}
