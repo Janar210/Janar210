@@ -44,7 +44,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',mo
 .armR{transform-origin:166px 236px;animation:armR .32s ease-in-out .16s infinite}
 @keyframes blinkEye{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
 .eyes{transform-box:fill-box;transform-origin:center;animation:blinkEye 4.5s infinite}
-/* no pointer (and on GitHub, where <img> SVGs never see the mouse): he just keeps his eyes on the laptop */
+/* no pointer (and on GitHub, where image-embedded SVGs never see the mouse): he just keeps his eyes on the laptop */
 .headIdle{transform-origin:131px 200px}
 .pupilIdle{transform:translate(0,.8px)}
 .tracking .headIdle,.tracking .faceIdle,.tracking .pupilIdle{animation:none}
